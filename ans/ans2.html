@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solution</title>
+    <link rel="stylesheet" href="ans.css">
+    <link rel="stylesheet" href="prism.css">
+</head>
+<body>
+    <pre>
+        <code class="language-c">
+        //largest element in an array
+
+            #include &lt;stdio.h&gt;
+                int main(){
+                    int n;
+                    printf("enter n:");
+                    scanf("%d",&n);
+                    int a[n],max;
+                    printf("enter array elements: ");
+                    for(int i=0; i&lt;n; i++)
+                    {
+                        scanf("%d",&a[i]);
+                    }
+                    max=a[0];
+                    for(int i=0; i&lt;n; i++)
+                    {
+                        if(max&lt;a[i])
+                        {
+                            max=a[i];
+                        }
+                    }
+                    printf("largest element: %d",max);
+                    return 0;
+                }                
+        </code>
+    </pre>
+    <script src="prism.js"></script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solution</title>
+    <link rel="stylesheet" href="ans.css">
+    <link rel="stylesheet" href="prism.css">
+</head>
+<body>
+    <pre>
+        <code class="language-c">
+        //Reverse an array in its place
+
+            #include &lt;stdio.h&gt;
+                int main(){
+                    int n;
+                    printf("enter size of array:");
+                    scanf("%d",&n);
+                    int a[n],temp;
+                    printf("enter array elements:");
+                    for(int i=0;i&lt;n;i++)
+                    {
+                        scanf("%d",&a[i]);
+                    }
+                    for(int i=0;i&lt;n/2;i++)
+                    {
+                        temp=a[i];
+                        a[i]=a[n-i-1];
+                        a[n-i-1]=temp;
+                    }
+                    for(int i=0;i&lt;n;i++)
+                    {
+                        printf("%d ",a[i]);
+                    }
+                    return 0;
+                }
+        </code>
+    </pre>
+    <script src="prism.js"></script>
+</body>
+</html>
