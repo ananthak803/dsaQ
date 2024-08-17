@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solution</title>
+    <link rel="stylesheet" href="ans.css">
+    <link rel="stylesheet" href="prism.css">
+</head>
+<body>
+    <pre>
+        <code class="language-c">
+            //given an unsorted array of integers and 2 number a and b write a  program to find the min distance between a and b.min distance between a and b is the min difference between their indexes.
+
+            #include &lt;stdio.h&gt;
+            #include &lt;limits.h&gt;  // to use INT_MAX
+            int main(){
+                //user input
+                int n,a,b;
+                printf("enter size of array:");
+                scanf("%d",&n);
+                int arr[n],temp,diff=INT_MAX;  //INT_MAX represents the maximum value that can be held by an int data type on your system
+                printf("enter elements of array:");
+                //array input
+                for(int i=0; i&lt;n; i++)
+                {
+                    scanf("%d",&arr[i]);
+                }
+                //a and b input
+                printf("enter a and b:");
+                scanf("%d%d",&a,&b);
+                
+                for(int i=0;i&lt;n;i++){
+                    if(arr[i]==a)       //checking for a in array
+                    {
+                        for(int j=0; j&lt;n; j++)
+                        {   
+                            if(arr[j]==b)     //checking for b in array
+                            {           
+                                temp=i>j?i-j:j-i;      //storing distance between a and b in temp
+                                diff=temp&lt;diff?temp:diff;      //finding min distance between a and b
+                            }
+                        }
+                    }
+                }
+                printf("diff = %d",diff);
+            
+            
+                return 0;
+            }
+        </code>
+    </pre>
+    <script src="prism.js"></script>
+</body>
+</html>

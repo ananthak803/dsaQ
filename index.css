@@ -21,20 +21,26 @@ header{
     height: 4rem;
     width: 100%;
     /* background-color: black; */
-    font-size: 40px;
+    font-size: 45px;
     display: flex ;
     justify-content: center ;
+    font-weight: 600;
 }
 
 main{
     height: auto;
     width:90%;
     /* border: 1px solid white; */
+    margin-top: 30px;
 }
 
 .box{
     height: auto;
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    padding: 0 25px ;
 }
 ol{
     margin: 10px 0;
@@ -47,5 +53,5 @@ a{
 }
 
 li{
-    margin: 5px;
+    margin: 10px 0;
 }

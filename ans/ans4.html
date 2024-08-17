@@ -10,7 +10,53 @@
 <body>
     <pre>
         <code class="language-c">
-            
+        // Left rotations (or derotations) on an array of integers. A left rotation on an array shifts each of the array's elements one unit to the left, and the first element is moved to the end of the array. 
+
+            #include &lt;stdio.h&gt;
+                //derotate function
+                void derotate(int a[],int n)
+                {
+                    int temp;
+                    temp=a[0];
+                    for(int i=0;i&lt;n-1;i++)
+                    {
+                        a[i]=a[i+1];
+                    }
+                    a[n-1]=temp;
+                }
+                
+                int main()
+                {
+                    //user input
+                    int n;
+                    printf("enter size of array:");
+                    scanf("%d",&n);
+                    int a[n],rotate,d;
+                    //array input
+                    printf("enter array elements:");
+                    for(int i=0;i&lt;n;i++)
+                    {
+                        scanf("%d",&a[i]);
+                    }
+                    //input d
+                    printf("enter number of derotations:");
+                    scanf("%d",&d);
+                    //total number of derotations
+                    rotate=d%n;
+                
+                    while(rotate>0)
+                    {
+                        derotate(a,n);
+                        rotate--;
+                    }
+                    //printing array after derotation
+                    for(int i=0;i&lt;n;i++)
+                    {
+                        printf("%d ",a[i]);
+                    }
+                
+                    return 0;
+                }
         </code>
     </pre>
     <script src="prism.js"></script>

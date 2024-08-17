@@ -10,7 +10,39 @@
 <body>
     <pre>
         <code class="language-c">
-            
+        //Second largest element in an array without sorting
+
+            #include &lt;stdio.h&gt;
+            #include &lt;limits.h&gt;
+            int main(){
+                //inputing array
+                int n;
+                printf("enter n:");   //n should be greater than 2
+                scanf("%d",&n);
+                int a[n],max=INT_MIN,max2=INT_MIN;  //INT_MIN- min value that can be held by an int type
+                printf("enter array elements: ");
+                for(int i=0; i&lt;n; i++)
+                {
+                    scanf("%d",&a[i]);
+                }
+
+                //finding 2nd largest number
+                for(int i=0; i&lt;n; i++)
+                {
+                    if(max&lt;a[i])
+                    {
+                        max=a[i];
+                    }
+                    if(a[i]&lt;max && a[i]>max2)
+                    {
+                        max2=a[i];
+                    }
+                }
+
+                //printing result
+                printf("2nd largest element is:%d",max2);
+                return 0;
+                }
         </code>
     </pre>
     <script src="prism.js"></script>
