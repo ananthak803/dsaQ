@@ -50,8 +50,18 @@ ol{
 
 a{
     text-decoration: none;
+    color: rgba(10, 214, 129, 0.89);
 }
 
+a:hover
+{
+    color: rgba(4, 101, 61, 0.89);
+}
+
+a:active
+{
+    color: rgba(225, 223, 214, 0.89);
+}
 li{
     margin: 10px 0;
 }

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Majority Element</title>
+    <link rel="stylesheet" href="ans.css">
+    <link rel="stylesheet" href="prism.css">
+</head>
+<body>
+    <pre>
+        <code class="language-c">
+            /*Find and print majority element in an array.
+            The majority element is the element that appears more than ⌊n / 2⌋ times.*/
+            
+            /*Leetcode link : https://leetcode.com/problems/majority-element/description/  */
+            
+            //straight forward approach
+            #include &lt;stdio.h&gt;
+            void main()
+            {
+                //declaration
+                int i,j,count,n;
+            
+                //size of array input
+                printf("enter size of array:");
+                scanf("%d",&n);
+            
+                //arrya input
+                int a[n];
+                printf("enter array elements:");
+                for(i=0;i&lt;n;i++)
+                    scanf("%d",&a[i]);
+            
+                //finding majority number
+                for(i=0;i&lt;n;i++)
+                {
+                    count=0;
+                    for( j=0;j&lt;n;j++)
+                    {
+                        if(a[i]==a[j])
+                        {
+                            count++;
+                        }
+                    }
+                    if(count>n/2)
+                    {
+                        //printing result and exiting loop
+                        printf("majority element is %d",a[i]);
+                        break;            //assuming there is only one majority element
+                    }
+                }
+                printf("no majority element found");
+            }
+        </code>
+    </pre>
+    <script src="prism.js"></script>
+</body>
+</html>

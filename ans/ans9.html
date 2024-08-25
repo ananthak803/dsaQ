@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Buy Sell</title>
+    <link rel="stylesheet" href="ans.css">
+    <link rel="stylesheet" href="prism.css">
+</head>
+<body>
+    <pre>
+        <code class="language-c">
+            /*The elements of integer array is the price of a given stock on the ith day.
+            maximize your profit by choosing a single day to buy one stock and choosing a 
+            different day in the future to sell that stock.print profit*/
+            
+            /*leetcode link : https://leetcode.com/problems/best-time-to-buy-and-sell-stock/description/  */
+            
+            #include &lt;stdio.h&gt;
+            #include &lt;limits.h&gt;  //to use INT_MAX
+            void main()
+            {
+                //declarations
+                int n,i,max=0,min=INT_MAX;
+            
+                //array size input
+                printf("enter size of array:");
+                scanf("%d",&n);
+            
+                //array input
+                int a[n];
+                printf("enter array elements:");
+                for(i=0;i&lt;n;i++)
+                    scanf("%d",&a[i]);    
+            
+                //finding max profit
+                for(i=0;i&lt;n;i++)
+                {
+                    min=min&gt;a[i]?a[i]:min;
+                    max=max&lt;a[i]-min?a[i]-min:max;
+                }
+            
+                //printing result
+                if(max==0)
+                    printf("0 profit");
+                else
+                    printf("profit:%d",max);
+            
+            }
+        </code>
+    </pre>
+    <script src="prism.js"></script>
+</body>
+</html>

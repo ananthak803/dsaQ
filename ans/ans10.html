@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Single number</title>
+    <link rel="stylesheet" href="ans.css">
+    <link rel="stylesheet" href="prism.css">
+</head>
+<body>
+    <pre>
+        <code class="language-c">
+            //In an user inputed array "every element appears twice except for one". Find that single one.
+
+            /*Leetcode link : https://leetcode.com/problems/single-number/description/ */
+            
+            #include &lt;stdio.h&gt;
+            void main()
+            {
+                //declarations
+                int i,key=0,n;
+            
+                //array size input
+                printf("enter array size:");
+                scanf("%d",&n);
+            
+                //array input
+                int a[n];
+                printf("enter array elements:");
+                for(i=0;i&lt;n;i++)
+                    scanf("%d",&a[i]);
+                
+                //finding single element
+                for(i=0;i&lt;n;i++)
+                    key=key^a[i];     //xor cancels pairs.x^x=0 amd x^0=x 
+                
+                //printing result
+                printf("single element is %d",key);
+            }
+        </code>
+    </pre>
+    <script src="prism.js"></script>
+</body>
+</html>
