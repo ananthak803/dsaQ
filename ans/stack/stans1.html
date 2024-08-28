@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sort colors</title>
+    <link rel="stylesheet" href="../ans.css">
+    <link rel="stylesheet" href="../prism.css">
+</head>
+<body>
+    <pre>
+        <code class="language-c">
+            //Stack Implementation
+
+            #include &lt;stdio.h&gt;
+                // #include&lt;stdlib.h&gt;
+                int max=10;
+                
+                //push
+                int push(int array[],int item,int *top)
+                {
+                    if(*top==max-1)
+                    {
+                        printf("Overflow");
+                        return 0;
+                    }
+                    (*top)++;
+                    // printf("enter element to push: ");
+                    array[*top]=item;
+                }
+                
+                //pop
+                int pop(int array[],int *top)
+                {
+                    if(*top==-1)
+                    {
+                        printf("Underflow");
+                        return 0;
+                    }
+                    printf("value popped is %d",array[*top]);
+                    (*top)--;
+                }
+                
+                //traverse
+                int show(int array[],int *top)
+                {
+                    int temp=*top;
+                    if(temp==-1)
+                    {
+                        printf("stack is empty");
+                        return 0;
+                    }
+                    for(int i=0;i&lt;=*top;i++)
+                    {
+                        printf("%d  ",array[i]);
+                    }
+                }
+                
+                int main()
+                {
+                    int n[max],top=-1,item,condition=1;
+                    
+                    do{
+                        printf("\nenter(1 for push,2 for pop,3 for show,0 to exit)");
+                        scanf("%d",&condition);
+                        switch(condition)
+                        {
+                            case 1:
+                            printf("enter elemetn to push");
+                            scanf("%d",&item);
+                            push(n,item,&top);
+                            break;
+                            case 2:
+                            pop(n,&top);
+                            break;
+                            case 3:
+                            show(n,&top);
+                            break;
+                        }
+                    }while(condition);
+                
+                    // traverse(n,p);
+                    return 0;
+                }
+        </code>
+    </pre>
+    <script src="../prism.js"></script>
+</body>
+</html>
