@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Single number</title>
+    <link rel="stylesheet" href="../ans.css">
+    <link rel="stylesheet" href="../prism.css">
+</head>
+<body>
+    <pre>
+        <code class="language-c">
+            /*Given a boolean matrix (contains only 0 and 1) of size m X n where each row is
+            sorted, write a a program to find which row has maximum number
+            of 1's. */
+
+            #include &lt;stdio.h&gt;
+            void main()
+            {
+                //declarations
+                int m,n,i,j,count,max=-1,row=-1;
+
+                //array size input
+                printf("enter number of rows and columns:");
+                scanf("%d%d",&m,&n);
+
+                //array input
+                int a[m][n];
+                printf("enter array elements: ");
+                for(i=0;i&lt;m;i++)
+                {
+                    for(j=0;j&lt;n;j++)
+                    {
+                        scanf("%d",&a[i][j]);
+                    }
+                }
+
+                // finding row with maximum 1
+                for(i=0;i&lt;m;i++)
+                {
+                    j=n-1;
+                    count=0;
+                    while(a[i][j]==1 && j&gt;=0)
+                    {
+                        count++;
+                        j--;
+                    }
+                    if(max&lt;count && count!=0)
+                    {
+                        max=count;
+                        row=i;
+                    }
+                }
+
+                //printing result
+                if(row!=-1)
+                    printf("row-%d",row+1);
+                else
+                    printf("not present");
+            
+            }
+        </code>
+    </pre>
+    <script src="../prism.js"></script>
+</body>
+</html>

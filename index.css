@@ -136,6 +136,9 @@ ol li a{
     text-decoration: none;
     color: inherit;
 }
+ol li a span{
+    color: red;
+}
 
 /* .box a{
     text-decoration: none;

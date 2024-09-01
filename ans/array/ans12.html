@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Single number</title>
+    <link rel="stylesheet" href="../ans.css">
+    <link rel="stylesheet" href="../prism.css">
+</head>
+<body>
+    <pre>
+        <code class="language-c">
+        /*Given a matrix of size n X n, where every row and every column is sorted in
+        increasing order. Write an algorithm and a program to find whether the given key
+        element is present in the matrix or not. (Linear time complexity)*/
+
+
+        /*********** method 1 - without using UDF ***********/
+
+        #include &lt;stdio.h&gt;
+        int main()
+        {
+            //declarations
+            int n,i,j,key;
+
+            //array size input
+            printf("enter size of array:");
+            scanf("%d",&n);
+            
+            //2d array input
+            int a[n][n];
+            printf("enter array elements:");
+            for(i=0; i&lt;n; i++)
+            {
+                for(j=0; j&lt;n; j++)
+                {
+                    scanf("%d",&a[i][j]);
+                }
+            }
+
+            //key input
+            printf("enter element to search:");
+            scanf("%d",&key);
+
+            // resetting value of i and j
+            i=0,j=n-1;
+            while(j&gt;=0 && i&lt;n)
+            {
+                if(a[i][j]==key)
+                {
+                    printf("present");
+                    return 0;
+                }
+                else if(a[i][j]&lt;key)
+                {
+                    i++;
+                }
+                else
+                    j--;
+            }
+            printf("not present");
+        }
+
+
+        /*********** method 2 - using UDF ***********/
+
+        #include &lt;stdio.h&gt;
+
+        //function to search key in matrix of size n X n
+        int search(int n,int array[n][n],int key)
+        {
+            int i=0,j=n-1;
+            while(j&gt;=0 && i&lt;n)
+            {
+                if(array[i][j]==key)
+                {
+                    printf("present");
+                    return 0;
+                }
+                else if(array[i][j]&lt;key)
+                {
+                    i++;
+                }
+                else
+                    j--;
+            }
+            printf("not present");
+        }
+
+        //main
+        int main()
+        {
+            //declarations
+            int n,i,j,key;
+
+            //array size input
+            printf("enter size of array:");
+            scanf("%d",&n);
+            
+            //2d array input
+            int a[n][n];
+            printf("enter array elements:");
+            for(i=0; i&lt;n; i++)
+            {
+                for(j=0; j&lt;n; j++)
+                {
+                    scanf("%d",&a[i][j]);
+                }
+            }
+
+            //key input
+            printf("enter element to search:");
+            scanf("%d",&key);
+
+            //function call
+            search(n,a,key);
+        
+        }
+        </code>
+    </pre>
+    <script src="../prism.js"></script>
+</body>
+</html>

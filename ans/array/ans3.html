@@ -4,43 +4,47 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Solution</title>
-    <link rel="stylesheet" href="ans.css">
-    <link rel="stylesheet" href="prism.css">
+    <link rel="stylesheet" href="../ans.css">
+    <link rel="stylesheet" href="../prism.css">
 </head>
 <body>
     <pre>
         <code class="language-c">
-        //largest element in an array
+        //Second largest element in an array without sorting
 
             #include &lt;stdio.h&gt;
+            #include &lt;limits.h&gt;
             int main(){
-                //inputting array
+                //inputing array
                 int n;
-                printf("enter n:");
+                printf("enter n:");   //n should be greater than 2
                 scanf("%d",&n);
-                int a[n],max;
+                int a[n],max=INT_MIN,max2=INT_MIN;  //INT_MIN- min value that can be held by an int type
                 printf("enter array elements: ");
                 for(int i=0; i&lt;n; i++)
                 {
                     scanf("%d",&a[i]);
                 }
 
-                //finding largest number
-                max=a[0];
+                //finding 2nd largest number
                 for(int i=0; i&lt;n; i++)
                 {
                     if(max&lt;a[i])
                     {
                         max=a[i];
                     }
+                    if(a[i]&lt;max && a[i]>max2)
+                    {
+                        max2=a[i];
+                    }
                 }
 
                 //printing result
-                printf("largest element: %d",max);
+                printf("2nd largest element is:%d",max2);
                 return 0;
-            }                
+                }
         </code>
     </pre>
-    <script src="prism.js"></script>
+    <script src="../prism.js"></script>
 </body>
 </html>
