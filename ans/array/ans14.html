@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Single number</title>
+    <link rel="stylesheet" href="../ans.css">
+    <link rel="stylesheet" href="../prism.css">
+</head>
+<body>
+    <pre>
+        <code class="language-c">
+            /*Given a matrix of size n X n containing positive integers, write a
+            program to rotate the elements of matrix in clockwise direction.*/
+
+            #include &lt;stdio.h&gt;
+                void rotate(int n,int a[n][n],int l)
+                {
+                    int temp=a[l][l],i,j;
+                    n=n-l;
+                
+                    //left side 
+                    for(i=l;i&lt;n-1;i++)
+                    {
+                        a[i][l]=a[i+1][l];
+                    }
+                
+                    //bottom
+                    for(j=l;j&lt;n-1;j++)
+                    {
+                        a[n-1][j]=a[n-1][j+1];	
+                    }
+                
+                    //right side
+                    for(i=n-1;i&gt;l;i--)
+                    {
+                        a[i][n-1]=a[i-1][n-1];
+                    }
+                
+                    //top
+                    for(j=n-1;j&gt;l;j--)
+                    {
+                        a[l][j]=a[l][j-1];
+                    }
+                    a[l][l+1]=temp;
+                }
+                
+                int main()
+                {	
+                    int n,i,j,temp,layer;
+                    scanf("%d",&n);
+                    layer=n/2;
+                    
+                    //array input
+                    int a[n][n];
+                    for(i=0;i&lt;n;i++)
+                    {
+                        for(j=0;j&lt;n;j++)
+                        {
+                            scanf("%d",&a[i][j]);	
+                        }
+                    }
+                    
+                    for(i=0;i&lt;layer;i++)
+                        rotate(n,a,i);
+                    
+                    //printing result
+                    for(i=0;i&lt;n;i++)
+                    {
+                        for(j=0;j&lt;n;j++)
+                        {
+                            printf("%d ",a[i][j]);	
+                        }
+                        printf("\n");
+                    }
+                
+                    return 0;
+                }
+                
+        </code>
+    </pre>
+    <script src="../prism.js"></script>
+</body>
+</html>
