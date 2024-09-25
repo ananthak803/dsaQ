@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>valid parenthesis</title>
+    <link rel="stylesheet" href="../ans.css">
+    <link rel="stylesheet" href="../prism.css">
+</head>
+<body>
+    <pre>
+        <code class="language-c">
+        //Given an expression string consisting of opening and closing brackets “{“,”}”,”(“,”)”,”[“,”]”,
+        design an algorithm and a program to check whether this expression has balanced paranthesis or
+        not.
+        
+        /*leetcode link - https://leetcode.com/problems/valid-parentheses */
+
+            #include &lt;stdio.h&gt;
+            #include &lt;stdlib.h&gt;
+            #define max 20
+                
+                //push
+                void push(char ar[], int *top, char item)
+                {
+                    if (*top == max - 1)
+                    {
+                        printf("stack full\n");
+                        return;
+                    }
+                    else
+                    {
+                        if (*top == -1)
+                            *top = 0;
+                        else
+                            (*top)++;
+                        ar[*top] = item;
+                    }
+                }
+                
+                //pop
+                void pop(char ar[], int *top)
+                {
+                    if (*top == -1)
+                        printf("empty stack\n");
+                    else
+                        (*top)--;
+                }
+                int main()
+                {
+                    //declaration
+                    int i, top = -1;
+                    char s[max], a[max];
+                
+                    //input
+                    printf("enter: ");
+                    gets(s);
+                
+                    //checking for valid parenthesis
+                    for (i = 0; s[i] != '\0'; i++)
+                    {
+                        if (s[i] == '(' || s[i] == '[' || s[i] == '{')
+                        {
+                            push(a, &top, s[i]);
+                        }
+                        else
+                        {
+                            switch (s[i])
+                            {
+                            case ')':
+                                if (a[top] == '(')
+                                {
+                                    pop(a, &top);
+                                }
+                                else
+                                {
+                                    printf("unbalanced");
+                                    exit(0);
+                                }
+                                break;
+                            case ']':
+                                if (a[top] == '[')
+                                {
+                                    pop(a, &top);
+                                }
+                                else
+                                {
+                                    printf("unbalanced");
+                                    exit(0);
+                                }
+                                break;
+                            case '}':
+                                if (a[top] == '{')
+                                {
+                                    pop(a, &top);
+                                }
+                                else
+                                {
+                                    printf("unbalanced");
+                                    exit(0);
+                                }
+                                break;
+                            default:
+                                printf("unbalanced");
+                                exit(0);
+                            }
+                        }
+                    }
+                    if (top == -1)
+                        printf("balanced");
+                    else
+                        printf("unbalanced");
+                }
+        </code>
+    </pre>
+    <script src="../prism.js"></script>
+</body>
+</html>
