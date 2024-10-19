@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Friend function</title>
+    <link rel="stylesheet" href="../ans.css">
+    <link rel="stylesheet" href="../prism.css">
+</head>
+<body>
+    <pre>
+        <code class="language-c"> 
+            /*Friend function -A friend function is a function that isn't a member of a 
+            class but has access to the class's private and protected members. Friend 
+            functions aren't considered class members; they're normal external functions 
+            that are given special access privileges*/
+
+            #include &lt;iostream&gt;
+                using namespace std;
+                class A
+                {
+                    int a=1;
+                    int b=2;
+                    public:
+                    friend void sum(A y);
+                };
+                
+                void sum(A obj)
+                {
+                    cout&lt;&lt;obj.a+obj.b;
+                };
+                
+                int main()
+                {
+                    A n;
+                    sum(n);
+                    return 0;
+                }
+                
+        </code>
+    </pre>
+    <script src="../prism.js"></script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Friend class</title>
+    <link rel="stylesheet" href="../ans.css">
+    <link rel="stylesheet" href="../prism.css">
+</head>
+<body>
+    <pre>
+        <code class="language-c"> 
+            /*Friend class - A friend class can access private and protected members of 
+            other classes in which it is declared as a friend.*/
+
+            #include &lt;iostream&gt;
+                using namespace std;
+                
+                class A
+                {
+                    int a = 1;
+                    int b = 2;
+                
+                public:
+                    friend class B;
+                };
+                
+                class B
+                {
+                    A obj;
+                public:
+                
+                    /*accessing variables of a without passing parameter in function , and object obj of 
+                    class A is created.*/
+                    void sum()
+                    {
+                        cout << obj.a&lt;&lt;endl;
+                    }
+                    
+                    //this function will be called when object is passed as parameter.
+                    void sum(A obj)
+                    {
+                        cout << obj.b&lt;&lt;endl;
+                    }
+                };
+                
+                int main()
+                {
+                    B x;
+                    x.sum();
+                    A y;
+                    x.sum(y);
+                    return 0;
+                }
+        </code>
+    </pre>
+    <script src="../prism.js"></script>
+</body>
+</html>

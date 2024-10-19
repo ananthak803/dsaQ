@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List</title>
+    <link rel="stylesheet" href="../ans.css">
+    <link rel="stylesheet" href="../prism.css">
+</head>
+<body>
+    <pre>
+        <code class="language-python"> 
+            '''list -A Python list is defined as an ordered, mutable, and heterogeneous collection of 
+            objects. They are defined within square brackets [ ] and each element in the list is 
+            separated by a comma.'''
+            
+
+            #this is a single line comment
+
+            '''
+            this
+            is
+            multiline
+            comment
+            '''
+            
+            '''
+            #creating a list 
+            ls=[1,2,3,"hello",4]
+            
+            #accesing list elements using index.
+            print(ls[0])    #1
+            print(ls[2])    #3   
+            print(ls[-2])   #hello
+            '''
+            
+            #list functions
+            
+            '''
+            # 1.list()-creates a list,takes an iterable as argument.
+            #returns a list.
+            x=list()    #creates empty list, no iterable passed as argument.
+            print(x)    #[]
+            
+            y=list("hello") #passing a string as argument.
+            print(y)    #['h', 'e', 'l', 'l', 'o']
+            
+            print(list(y))  #passing a list as argument. ['h', 'e', 'l', 'l', 'o']
+            '''
+            
+            '''
+            # 2.append()- adds an element to the end of list.
+            #no return value,None
+            ls=[1,2,3]
+            ls.append(4)
+            print(ls)   #[1,2,3,4]
+            '''
+            
+            '''
+            # 3.pop()- removes an element from the end of list. If index passed then removes the elemnt at that index.
+            #returns the removed element.
+            ls=[1,2,3,4,5]
+            print(ls.pop())   #5
+            print(ls)   #[1,2,3,4]
+            ls.pop(0)
+            print(ls)   #[,2,3,4]
+            '''
+            
+            '''
+            # 4.remove()-removes the first occurence of value passed if present.
+            #returns no value.None
+            ls=[1,2,1,2]
+            ls.remove(2)
+            print(ls)   #[1,1,2]
+            '''
+            
+            '''
+            # 5.extend()-adds the iterable passed to the list.
+            #returns no value.None
+            ls=[1,2,3]
+            x=[4,5]
+            ls.extend(x)
+            print(ls)   #[1,2,3,4,5]
+            x.extend("hello")
+            print(x)    #[4, 5, 'h', 'e', 'l', 'l', 'o']
+            '''
+            
+            '''
+            # 6.count()-counts the occurence of value passed.
+            #returns the number of occurences of value.
+            ls=[1,2,3,2,2]
+            print(ls.count(2))  #3
+            print(ls.count(3))  #1
+            '''
+            
+            '''
+            # 7.index()-returns the index of value passed.
+            #retuns index number.
+            ls=[1,2,3,4]
+            print(ls.index(1))  #0
+            print(ls.index(3))  #2
+            '''
+            
+            '''
+            # 8.sort()-sorts the original list in ascending order.
+            #returns no value
+            ls=[2,6,1,4]
+            print(ls)   #[1,2,4,6]
+            ls.sort(reverse=True)   #sorts list in descending order
+            print(ls)   #[6,4,2,1]
+            '''
+            
+            
+            # 9.clear()-deletes all elements in list.
+            #returns no value,None
+            ls=[1,2,3]
+            ls.clear()
+            print(ls)   #[]             
+        </code>
+    </pre>
+    <script src="../prism.js"></script>
+</body>
+</html>

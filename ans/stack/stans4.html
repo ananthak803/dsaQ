@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reverse string using stack</title>
+    <link rel="stylesheet" href="../ans.css">
+    <link rel="stylesheet" href="../prism.css">
+</head>
+<body>
+    <pre>
+        <code class="language-c">
+        // Given an empty stack, design an algorithm and a program to reverse a string using this stack.
+
+            #include &lt;stdio.h&gt;
+            #define max 20
+
+            //push
+            void push(char a[], int *top, char c)
+            {
+                if (*top == max - 1)
+                    return;
+                else
+                {
+                    (*top)++;
+                    a[*top] = c;
+                }
+            }
+
+            //pop
+            char pop(char a[], int *top)
+            {
+                if (*top == -1)
+                    printf("empty");
+                else
+                    return a[(*top)--];
+            }
+
+            int main()
+            {
+
+                int p = -1;
+                char s[max], a[max];
+                printf("enter string:");
+                scanf("%[^\n]s", s);
+
+                //pushing string s into stack a
+                for (int i = 0; s[i] != '\0'; i++)
+                {
+                    push(a, &p, s[i]);
+                }
+
+                //pop stack a . popped value into string s
+                for (int i = 0; s[i] != '\0'; i++)
+                {
+                    s[i] = pop(a, &p);
+                }
+
+                //printing result
+                printf("%s\n", s);
+            }
+
+        </code>
+    </pre>
+    <script src="../prism.js"></script>
+</body>
+</html>

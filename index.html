@@ -9,16 +9,31 @@
 </head>
 <body>
     <header>
-        <div class="headerBox" id="boxH"><h1>Data Structures</h1></div>
-        <div class="headerBox" id="boxL">
-            <a href="#arrayBox" ><span>Array</span></a>
-            <a href="#stackBox"><span>Stack</span></a>
-            <a href="#queueBox"><span>Queue</span></a>
-            <a href="#listBox"><span>Linked List</span></a>
-
-
-            
+        <div class="headerBox" id="boxH">
+            <h1 id="dsaHead">Data Structures</h1>
+            <h1 id="oopsHead">OOPS with C++</h1>
+            <h1 id="pythonHead">Python</h1>
         </div>
+
+        <div class="headerBox">
+            <div class="boxL" id="dsaList">
+                <a href="#arrayBox" ><span>Array</span></a>
+                <a href="#stackBox"><span>Stack</span></a>
+                <a href="#queueBox"><span>Queue</span></a>
+                <a href="#listBox"><span>Linked List</span></a>
+            </div>
+    
+            <div  class="boxL" id="oopsList">
+                <a href="#oopsBox"><span>OOPS</span></a>
+            </div>
+
+            <div class="boxL" id="pythonList">
+                <a href="#pythonBox"><span>Basics</span></a>
+                <a href="#dataHandlingBox"><span>Data handling</span></a>
+            </div>
+        </div>
+        
+
     </header>
     <main>
     <!-- nested list structure -->
@@ -32,7 +47,7 @@
             </ul>
         </div> -->
 
-            <ul>
+            <ul id="dsa">
                 <!--Array-->
                 <li>
                     <span id="arrayBox">Array</span>
@@ -61,6 +76,8 @@
                     <ol>
                         <li><a href="ans/stack/stans1.html">Stack Implementation using array.<span>(week3)</span></a></li>
                         <li><a href="ans/stack/stans2.html">Valid Parenthesis.<span>(week3)</span></a></li>
+                        <li><a href="ans/stack/stans4.html">Reverse string using stack.<span>(week4)</span></a></li>
+
 
                     </ol>
                 </li>
@@ -80,6 +97,37 @@
                 </li>
 
             </ul>
+
+            <ul id="oops">
+                <li>
+                    <span id="oopsBox">oops</span>
+                    <ol>
+                        <li><a href="ans/oops/oops1.html">Friend function</a></li>
+                        <li><a href="ans/oops/oops2.html">Friend class</a></li>
+
+                    </ol>
+                </li>
+            </ul>
+
+            <ul id="python">
+                <li>
+                    <span id="pythonBox">Basics</span>
+                    <ol>
+                        <li><a href="ans/python/py1.html">Palindrome number</a></li>
+                        <!-- <li><a href="">this is python qn</a></li> -->
+                        
+                    </ol>
+                </li>
+
+                <li>
+                    <span id="dataHandlingBox">Data handling</span>
+                    <ol>
+                        <li><a href="ans/dataHandling/dh1.html">List</a></li>
+                    </ol>
+                </li>
+            </ul>
+
+
              
         <!-- <div class="box" id="stackBox">
             
@@ -92,5 +140,6 @@
             </ol>
         </div> -->
     </main>
+    <script src="index.js"></script>
 </body>
 </html>
