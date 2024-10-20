@@ -45,9 +45,10 @@ header{
 #boxH{
     flex-direction: row;
     justify-content: center;
-    font-size: 18px;
+    font-size: 1.1rem;
     justify-content:space-around;
     border-bottom: 4px solid rgb(3, 3, 3);
+    align-items:center;
     /* flex-wrap: wrap ; */
 }
 
@@ -79,9 +80,11 @@ header{
 
 .listH span */
 .boxL{
+    display:flex;
     flex-direction: row;
-    font-size: 25px;
-    /* justify-content: space-evenly; */
+    font-size: 1.7rem;
+    justify-content: space-around;
+    align-content:center;
 }
 .boxL a{
     color: white;
@@ -89,8 +92,8 @@ header{
     text-decoration: none;
 }
 .boxL span{
-    padding: 8px;
-    margin: 0 20px;
+    /* padding: 8px; */
+    margin: 1.2rem;
 }
 .boxL span:hover{
     border-bottom: 3px solid white;
@@ -145,12 +148,12 @@ main{
 } */
 
 main ul{
-    margin: 35px;
+    margin: 2.1rem;
 }
 
 ul li{
     margin: 10px 0;
-    font-size:30px;
+    font-size:1.9rem;
     
 }
 
@@ -187,3 +190,34 @@ ol li a span{
 li{
     margin: 10px 0;
 } */
+
+@media screen and (max-width: 700px){
+    #boxH
+    {
+        font-size: 0.7rem;
+    }
+    .boxL
+    {
+       font-size:1.2rem;
+    }
+}
+
+@media screen and (max-width:450px)
+{
+    /* header
+    {
+        height:5.6rem;
+    } */
+    #boxH
+    {
+        font-size:0.5rem;
+    }
+    .boxL
+    {
+        font-size:0.7rem;
+    }
+    ul li
+    {
+        font-size:0.8rem;
+    }
+}
