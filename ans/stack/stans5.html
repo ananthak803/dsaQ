@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2 stack using one array</title>
+    <link rel="stylesheet" href="../ans.css">
+    <link rel="stylesheet" href="../prism.css">
+</head>
+<body>
+    <pre>
+        <code class="language-c">
+        /*Implement two stacks by using only one array i.e. both the
+        stacks should use the same array for push and pop operation.*/
+
+            #include &lt;stdio.h&gt;
+            #define max 20
+                
+                void push(int a[], int *top, int item)
+                {
+                    if (*top == max - 1)
+                        printf("stack full");
+                    else
+                        a[++(*top)] = item;
+                }
+                
+                
+                void pop(int *top)
+                {
+                    if (*top == -1)
+                        printf("stack empty");
+                    else
+                        (*top)--;
+                }
+                
+                //display stack
+                void display(int a[], int *top)
+                {
+                    if (*top == -1)
+                        return;
+                    for (int i = 0; i <= *top; i++)
+                        printf("%d ", a[i]);
+                    printf("\n");
+                }
+                
+                int main()
+                {
+                    //array size and array input
+                    int n;
+                    printf("enter size of array:");
+                    scanf("%d", &n);
+                    int a[n];
+                    for(int k=0; k&lt;n; k++)
+                        scanf("%d",&a[k]);
+                    
+                    //declarations
+                    int st1[max], st2[max];
+                    int choice = 1, top1 = -1, top2 = -1, i = 0, j =n-1;
+                
+                    while (choice)
+                    {
+                        printf("enter choice:");
+                        scanf("%d",&choice);
+                        switch (choice)
+                        {
+                        case 1:
+                            if (i &lt;n/ 2)
+                                push(st1, &top1, a[i++]);
+                            break;
+                        case 2:
+                            if (j >=n/ 2)
+                                push(st2, &top2, a[j--]);
+                            break;
+                        case 3:
+                            pop(&top1);
+                            break;
+                        case 4:
+                            pop(&top2);
+                            break;
+                        case 5:
+                            display(st1, &top1);
+                            display(st2, &top2);
+                            break;
+                        case 0:
+                            return 0;
+                        }
+                    }
+                }
+        </code>
+    </pre>
+    <script src="../prism.js"></script>
+</body>
+</html>

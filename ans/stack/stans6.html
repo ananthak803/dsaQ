@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Postfix evaluation</title>
+    <link rel="stylesheet" href="../ans.css">
+    <link rel="stylesheet" href="../prism.css">
+</head>
+<body>
+    <pre>
+        <code class="language-c">
+        /* program to find result of postfix expression. */
+        /*note - input should not have spaces and should contain only single digit numbers.*/
+
+            #include &lt;stdio.h&gt;
+            #define max 20
+                
+                void push(int a[], int *top, int c)
+                {
+                    if (*top == max - 1)
+                        return;
+                    else
+                        a[++(*top)] = c;
+                }
+                
+                int pop(int a[], int *top)
+                {
+                    if (*top == -1)
+                    {
+                        printf("empty\n");
+                        return 0;
+                    }
+                    else
+                        return a[(*top)--];
+                } 
+                
+                int main()
+                {
+                    char s[max];
+                    int a[max];
+                    int top = -1, i = 0,x,y;
+                    printf("enter expression:");
+                    fgets(s, max, stdin);
+                    while (s[i] != '\0')
+                    {
+                        if (s[i] &gt;='0' && s[i] &lt;='9')
+                            push(a, &top, s[i] - '0');
+                        else
+                        {
+                            if(top&lt;1)
+                                break;
+                            }
+                           else
+                           {
+                                y = pop(a, &top);
+                                x = pop(a, &top);
+                           }
+                
+                            switch (s[i])
+                            {
+                                case '+':
+                                    push(a, &top, x + y);
+                                    break;
+                                case '-':
+                                    push(a, &top, x - y);
+                                    break;
+                                case '/':
+                                    push(a, &top, x / y);
+                                    break;
+                                case '*':
+                                push(a, &top, x * y);
+                                break;
+                            }
+                        }
+                        i++;
+                    if(top!=-1)
+                        printf("%d ", pop(a, &top));
+                    else
+                        printf("no result");
+                }
+        </code>
+    </pre>
+    <script src="../prism.js"></script>
+</body>
+</html>

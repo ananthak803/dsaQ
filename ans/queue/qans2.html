@@ -3,101 +3,104 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>circular queue
+    <title>Reverse queue</title>
     <link rel="stylesheet" href="../ans.css">
     <link rel="stylesheet" href="../prism.css">
 </head>
 <body>
     <pre>
         <code class="language-c">
+        /*Program to reverse a queue*/
+        
             #include &lt;stdio.h&gt;
-            #define max 5
+            #define max 10
                 
-                void enqueue(int array[],int *rear,int *front,int item)
+                //reverse fucntion
+                void reverse(int a[], int *rear, int *front)
                 {
-                    if(*front==(*rear+1)%max)
+                    int c = (*rear - *front + 1) / 2;
+                    int r = *rear, f = *front, temp;
+                    while (c != 0)
                     {
-                        printf("queue is full");
-                        return ;
+                        temp = a[f];
+                        a[f] = a[r];
+                        a[r] = temp;
+                        f++;
+                        r--;
+                        c--;
+                    }
+                }
+                
+                void enQueue(int a[], int *rear, int *front, int k)
+                {
+                    if (*rear == max - 1)
+                    {
+                        printf("overflow\n");
+                        return;
                     }
                     else
                     {
-                        if(*rear==-1)
+                        if (*rear == -1)
                         {
-                            *rear = 0;
-                            *front = 0;
+                            *front = *rear = 0;
+                            a[*rear] = k;
+                            return;
                         }
-                        else
-                        {
-                            *rear=(*rear+1)%max;
-                        }
-                        array[*rear]=item;
+                        a[++(*rear)] = k;
                     }
                 }
                 
-                void dequeue(int array[],int *rear,int *front)
+                void deQueue(int *rear, int *front)
                 {
-                    if(*front==-1)
+                    if (*rear == -1)
                     {
-                        printf("queue is empty");
-                        return ;
+                        printf("underflow\n");
+                        return;
                     }
-                    else
-                    {
-                        if(*front==*rear)
-                        {
-                            *front=-1;
-                            *rear=-1;
-                        }
-                        else
-                        {
-                            *front=(*front+1)%max;
-                        }
-                    }
+                    (*front)++;
+                    if (*front &gt; *rear)
+                        *front = *rear = -1;
                 }
                 
-                void display(int array[],int *rear,int *front)
-                {if(*front==-1)
+                void display(int a[], int *rear, int *front)
                 {
-                    printf("queue is empty");
-                    return ;
+                    if (*rear == -1)
+                        return;
+                    for (int i = *front; i &lt;= *rear; i++)
+                        printf("%d ", a[i]);
+                    printf("\n");
                 }
                 
-                    int i=*front;
-                    while(i!=*rear)
-                    {
-                        printf("%d ",array[i]);
-                        i=(i+1)%max;
-                    }
-                    printf("%d ",array[*rear]);
-                }
                 
                 int main()
                 {
-                int a[max],item,key=1,rear=-1,front=-1;
-                while(key)
-                {
-                    printf("\nenqueue(1)|dequeue(2)|display(3)|exit(0)");
-                    scanf("%d",&key);
-                    switch(key)
+                    int rear = -1, front = -1, a[max], k, choice = 1;
+                    while (choice)
                     {
-                        case 1:
-                                printf("enter element to insert:");
-                                scanf("%d",&item);
-                                enqueue(a,&rear,&front,item);
-                                break;
-                        case 2:
-                                dequeue(a,&rear,&front);
-                                break;
-                        case 3:
-                                display(a,&rear,&front);
-                                break;
+                        printf("enter choice: ");
+                        scanf("%d", &choice);
+                        switch (choice)
+                        {
                         case 0:
-                                return 0;
-                            
+                            return 0;
+                        case 1:
+                            printf("enter data:");
+                            scanf("%d", &k);
+                            enQueue(a, &rear, &front, k);
+                            break;
+                        case 2:
+                            deQueue(&rear, &front);
+                            break;
+                        case 3:
+                            display(a, &rear, &front);
+                            break;
+                        case 4:
+                            reverse(a, &rear, &front);
+                            break;
+                        }
                     }
                 }
-                }
+                
         </code>
     </pre>
     <script src="../prism.js"></script>

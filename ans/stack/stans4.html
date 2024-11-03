@@ -10,55 +10,40 @@
 <body>
     <pre>
         <code class="language-c">
-        // Given an empty stack, design an algorithm and a program to reverse a string using this stack.
+            //reversing string using stack(without recursion)
 
             #include &lt;stdio.h&gt;
             #define max 20
-
-            //push
-            void push(char a[], int *top, char c)
-            {
-                if (*top == max - 1)
-                    return;
-                else
+                
+                void push(char a[], int *top, char item)
                 {
-                    (*top)++;
-                    a[*top] = c;
+                    if (*top == max - 1)
+                        printf("stack full");
+                    else
+                        a[++*top] = item;
                 }
-            }
-
-            //pop
-            char pop(char a[], int *top)
-            {
-                if (*top == -1)
-                    printf("empty");
-                else
-                    return a[(*top)--];
-            }
-
-            int main()
-            {
-
-                int p = -1;
-                char s[max], a[max];
-                printf("enter string:");
-                scanf("%[^\n]s", s);
-
-                //pushing string s into stack a
-                for (int i = 0; s[i] != '\0'; i++)
+                
+                char pop(int *top)
                 {
-                    push(a, &p, s[i]);
+                    if (*top == -1)
+                        printf("stack empty");
+                    else
+                        *top--;
                 }
-
-                //pop stack a . popped value into string s
-                for (int i = 0; s[i] != '\0'; i++)
+                
+                int main()
                 {
-                    s[i] = pop(a, &p);
+                    char s[max], a[max];
+                    int i, top = -1;
+                    printf("enter stack");
+                    scanf("%[^\n]s", s);
+                    for (i = 0; s[i] != '\0'; i++)
+                        push(a, &top, s[i]);
+                    i = 0;
+                    while (top != -1)
+                        s[i++] = a[top--];
+                    printf("%s", s);
                 }
-
-                //printing result
-                printf("%s\n", s);
-            }
 
         </code>
     </pre>

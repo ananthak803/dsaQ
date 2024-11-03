@@ -10,198 +10,256 @@
 <body>
     <pre>
         <code class="language-c">
-            #include &lt;stdio.h&gt;
-            #include &lt;stdlib.h&gt;
-                struct node
-                {
-                    int data;
-                    struct node *next;
-                };
-                
-                struct node *insertbeg(struct node *head)
-                {
-                    struct node *temp = (struct node *)malloc(sizeof(struct node));
-                    printf("enter data : ");
-                    scanf("%d", &temp-&gt;data);
-                
-                    if (head == NULL)
-                    {
-                        head = temp;
-                        temp-&gt;next = NULL;
-                    }
-                    else
-                    {
-                        temp-&gt;next = head;
-                        head = temp;
-                    }
-                    return head;
-                }
-                
-                struct node *insertend(struct node *head)
-                {
-                    struct node *temp = (struct node *)malloc(sizeof(struct node));
-                    printf("enter data : ");
-                    scanf("%d", &temp->data);
-                    temp-&gt;next = NULL;
-                    if (head == NULL)
-                    {
-                        head = temp;
-                    }
-                    else
-                    {
-                        struct node *p = head;
-                        while (p-&gt;next != NULL)
-                            p = p-&gt;next;
-                        p-&gt;next = temp;
-                    }
-                    return head;
-                }
-                
-                struct node *deletebeg(struct node *head)
-                {
-                    if (head == NULL)
-                        printf("empty list\n");
-                    else
-                        head = head-&gt;next;
-                    return head;
-                }
-                
-                void deleteend(struct node *head)
-                {
-                    if (head == NULL)
-                        printf("empty list\n");
-                    else
-                    {
-                        struct node *temp = head;
-                        while (temp-&gt;next-&gt;next != NULL)
-                        {
-                            temp = temp-&gt;next;
-                        }
-                        temp-&gt;next = NULL;
-                    }
-                }
-                
-                struct node *insertat(struct node *head)
-                {
-                    if (head == NULL)
-                    {
-                        printf("empty list\n");
-                    }
-                    else
-                    {
-                        int pos;
-                        struct node *temp = (struct node *)malloc(sizeof(struct node));
-                        printf("enter data :");
-                        scanf("%d", &temp-&gt;data);
-                        struct node *p = head;
-                        printf("enter position: ");
-                        scanf("%d", &pos);
-                        if (pos == 1)
-                        {
-                            struct node *p = head;
-                            temp-&gt;next = head;
-                            head = temp;
-                            return head;
-                        }
-                        else
-                        {
-                            while (pos - 1 &gt; 1 && p-&gt;next != NULL)
-                            {
-                                p = p-&gt;next;
-                                pos--;
-                            }
-                            temp-&gt;next = p-&gt;next;
-                            p-&gt;next = temp;
-                        }
-                    }
-                    return head;
-                }
-                
-                struct node *deleteat(struct node *head)
-                {
-                    if (head == NULL)
-                    {
-                        printf("empty list\n");
-                    }
-                    else
-                    {
-                        int pos;
-                        printf("enter position: ");
-                        scanf("%d", &pos);
-                        struct node *p = head;
-                        if (head-&gt;next == NULL)
-                        {
-                            head = NULL;
-                        }
-                        else if (pos == 1)
-                        {
-                            head = head-&gt;next;
-                        }
-                        else
-                        {
-                            while (pos - 1 &gt; 1 && p != NULL)
-                            {
-                                p = p-&gt;next;
-                                pos--;
-                            }
-                            p-&gt;next = p-&gt;next-&gt;next;
-                        }
-                    }
-                    return head;
-                }
-                
-                void display(struct node *head)
-                {
-                    if (head == NULL)
-                    {
-                        printf("empty list\n");
-                        return;
-                    }
-                    struct node *temp = head;
-                    while (temp != NULL)
-                    {
-                        printf("%d ", temp-&gt;data);
-                        temp = temp-&gt;next;
-                    }
-                    printf("\n");
-                }
-                
-                int main()
-                {
-                    struct node *head = NULL;
-                    int choice = 1;
-                    while (choice)
-                    {
-                        printf("insert_beg:1||insert_end:2||delete_beg:3||delete_end:4||insert_at:5||deleteat:6||display:7||exit:0 :");
-                        scanf("%d", &choice);
-                        switch (choice)
-                        {
-                        case 1:
-                            head = insertbeg(head);
-                            break;
-                        case 2:
-                            head = insertend(head);
-                            break;
-                        case 3:
-                            head = deletebeg(head);
-                            break;
-                        case 4:
-                            deleteend(head);
-                            break;
-                        case 5:
-                            head = insertat(head);
-                            break;
-                        case 6:
-                            head = deleteat(head);
-                            break;
-                        case 7:
-                            display(head);
-                            break;
-                        case 0:
-                            return 0;
-                        }
-                    }
-                }
+/*Program to implement singly linked list.*/
+
+    #include &lt;stdio.h&gt;
+    #include&lt;stdlib.h&gt;
+
+    struct node
+    {
+        int data;
+        struct node *next;
+    };
+
+    struct node *create(int k)
+    {
+        struct node *temp = (struct node *)malloc(sizeof(struct node));
+        temp-&gt;data = k;
+        temp-&gt;next = NULL;
+        return temp;
+    }
+
+    struct node *insertFront(struct node *head, int k)
+    {
+        struct node *temp = (struct node *)malloc(sizeof(struct node));
+        temp-&gt;data = k;
+        if (head == NULL)
+        {
+            temp-&gt;next=NULL;
+            head = temp;
+        }
+        else
+        {
+            temp-&gt;next = head;
+            head = temp;
+        }
+        return head;
+    }
+
+    struct node *insertEnd(struct node *head, int k)
+    {
+        struct node *temp = (struct node *)malloc(sizeof(struct node));
+        temp-&gt;data = k;
+        temp-&gt;next = 0;
+        if (head == NULL)
+            head = temp;
+        else
+        {
+            struct node *p = head;
+            while (p-&gt;next != NULL)
+                p = p-&gt;next;
+            p-&gt;next = temp;
+        }
+        return head;
+    }
+
+    struct node *insertAnywhere(struct node *head, int pos, int k)
+    {
+        int c = 1;
+        struct node* p = head;
+        while (p-&gt;next != NULL)
+        {
+            p = p-&gt;next;
+            c++;
+        }
+        if (pos &gt; c)
+        {
+            printf("invalid postion");
+            return head;
+        }
+        else
+        {
+            struct node *temp = (struct node *)malloc(sizeof(struct node));
+            temp-&gt;data = k;
+            if(pos==1)
+            {
+                temp-&gt;next = head;
+                head=temp;
+                return head;
+            }
+            p = head;
+            c = 1;
+            while (c &lt;pos)
+            {
+                c++;
+                p = p-&gt;next;
+            }
+            temp-&gt;next = p-&gt;next;
+            p-&gt;next = temp;
+        }
+        return head;
+    }
+
+    struct node* deleteFront(struct node *head)
+    {
+        if(head==NULL)
+            printf("empty list\n");
+        else
+        {
+            struct node*p=head;
+            if(head-&gt;next==NULL)
+            {
+                head==NULL;
+                free(p);
+            }
+            else
+            {
+                head=head-&gt;next;
+                free(p);
+            }     
+        }
+        return head;
+    }
+
+    struct node* deleteEnd(struct node* head)
+    {
+        if(head==NULL)
+            printf("empty list\n");
+        else
+        {
+            struct node *temp=NULL,*p=head;
+            if(head-&gt;next==NULL)
+            {
+                p=head;
+                head=NULL;
+                free(p);
+                return head;
+            }
+            while(p-&gt;next-&gt;next!=NULL)
+                p=p-&gt;next;
+            temp=p-&gt;next;
+            p-&gt;next=NULL;
+            free(temp);
+        }
+        return head;
+    }
+
+    int sizeList(struct node* head)
+    {
+        if(head==NULL)
+            return 0;
+        else
+        {
+            int c=1;
+            while(head-&gt;next!=NULL)
+            {
+                head=head-&gt;next;
+                c++;
+            }
+            return c;
+        }
+    }
+
+    void isEmpty(struct node* head)
+    {
+        if(head==NULL)
+            printf("empty list\n");
+    }
+
+    int middleElement(struct node* head)
+    {
+        int c=1;
+        struct node* p=head;
+        while(p-&gt;next!=NULL)
+        {
+            c++;
+            p=p-&gt;next;
+        }
+        if(c%2==0)
+            c=c/2;
+        else
+            c=(c+1)/2;
+        p=head;
+        while(c!=1)
+        {
+            p=p-&gt;next;
+            c--;
+        }
+        return p-&gt;data;
+    }
+
+    void display(struct node *head)
+    {
+        if (head == NULL)
+            return ;
+        else
+        {
+            struct node *p = head;
+            while (p-&gt;next != NULL)
+            {
+                printf("%d ", p-&gt;data);
+                p=p-&gt;next;
+            }
+            printf("%d", p-&gt;data);
+            printf("\n");
+        }
+    }
+
+    int main()
+    {
+        struct node *head = NULL;
+        int choice = 1, k,pos;
+        while (choice)
+        {
+            printf("enter choice:");
+            scanf("%d", &choice);
+            switch (choice)
+            {
+            case 1:
+                printf("enter data:");
+                scanf("%d", &k);
+                head = create(k);
+                break;
+            case 2:
+                printf("enter data:");
+                scanf("%d", &k);
+                head = insertFront(head, k);
+                break;
+            case 3:
+                printf("enter data:");
+                scanf("%d", &k);
+                head = insertEnd(head, k);
+                break;
+            case 4:
+                printf("enter data:");
+                scanf("%d", &k);
+                printf("enter position:");
+                scanf("%d",&pos);
+                head=insertAnywhere(head,pos,k);
+                break;
+            case 5:
+                head=deleteFront(head);
+                break;
+            case 6:
+                head=deleteEnd(head);
+                break;
+            case 7:
+                printf("size of list: %d\n",sizeList(head));
+                break;
+            case 8:
+                isEmpty(head);
+                break;
+            case 9:
+                printf("%d",middleElement(head));
+                break;
+            case 10:
+                display(head);
+                break;
+            case 0:
+                return 0;
+            }
+        }
+    }
         </code>
     </pre>
     <script src="../prism.js"></script>

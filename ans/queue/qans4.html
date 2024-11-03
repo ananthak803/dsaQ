@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>circular queue
+    <link rel="stylesheet" href="../ans.css">
+    <link rel="stylesheet" href="../prism.css">
+</head>
+<body>
+    <pre>
+        <code class="language-c">
+            #include &lt;stdio.h&gt;
+            #define max 5
+                
+                void enqueue(int array[],int *rear,int *front,int item)
+                {
+                    if(*front==(*rear+1)%max)
+                    {
+                        printf("queue is full");
+                        return ;
+                    }
+                    else
+                    {
+                        if(*rear==-1)
+                        {
+                            *rear = 0;
+                            *front = 0;
+                        }
+                        else
+                        {
+                            *rear=(*rear+1)%max;
+                        }
+                        array[*rear]=item;
+                    }
+                }
+                
+                void dequeue(int array[],int *rear,int *front)
+                {
+                    if(*front==-1)
+                    {
+                        printf("queue is empty");
+                        return ;
+                    }
+                    else
+                    {
+                        if(*front==*rear)
+                        {
+                            *front=-1;
+                            *rear=-1;
+                        }
+                        else
+                        {
+                            *front=(*front+1)%max;
+                        }
+                    }
+                }
+                
+                void display(int array[],int *rear,int *front)
+                {if(*front==-1)
+                {
+                    printf("queue is empty");
+                    return ;
+                }
+                
+                    int i=*front;
+                    while(i!=*rear)
+                    {
+                        printf("%d ",array[i]);
+                        i=(i+1)%max;
+                    }
+                    printf("%d ",array[*rear]);
+                }
+                
+                int main()
+                {
+                int a[max],item,key=1,rear=-1,front=-1;
+                while(key)
+                {
+                    printf("\nenqueue(1)|dequeue(2)|display(3)|exit(0)");
+                    scanf("%d",&key);
+                    switch(key)
+                    {
+                        case 1:
+                                printf("enter element to insert:");
+                                scanf("%d",&item);
+                                enqueue(a,&rear,&front,item);
+                                break;
+                        case 2:
+                                dequeue(a,&rear,&front);
+                                break;
+                        case 3:
+                                display(a,&rear,&front);
+                                break;
+                        case 0:
+                                return 0;
+                            
+                    }
+                }
+                }
+        </code>
+    </pre>
+    <script src="../prism.js"></script>
+</body>
+</html>
