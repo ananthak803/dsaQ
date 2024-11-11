@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>queue using linked list</title>
+    <link rel="stylesheet" href="../ans.css">
+    <link rel="stylesheet" href="../prism.css">
+</head>
+<body>
+    <pre>
+        <code class="language-c">
+        /*Program to implement queue using linked list.*/
+        /*credit-Sun_Raku*/
+        
+            #include &lt;stdio.h&gt;
+            #include &lt;stdlib.h&gt;
+                
+                struct node 
+                {
+                    int data;
+                    struct node* next;
+                };
+                
+                struct queue 
+                {
+                    struct node* front;
+                    struct node* rear;
+                };
+                
+                struct queue* createQueue() 
+                {
+                    struct queue* q = (struct queue*)malloc(sizeof(struct queue));
+                    q-&gt;front = q-&gt;rear = NULL;
+                    return q;
+                }
+                
+                void enQueue(struct queue* q, int k)
+                 {
+                    struct node* temp = (struct node*)malloc(sizeof(struct node));
+                    temp-&gt;data = k;
+                    temp-&gt;next = NULL;
+                
+                    if (q-&gt;rear == NULL) 
+                    {
+                        q-&gt;front = q-&gt;rear = temp;
+                        return;
+                    }
+                
+                    q-&gt;rear-&gt;next = temp;
+                    q-&gt;rear = temp;
+                }
+                
+                int deQueue(struct queue* q) 
+                {
+                    if (q-&gt;front == NULL) 
+                    {
+                        printf("Queue is empty!\n");
+                        return -1;
+                    }
+                
+                    struct node* temp = q-&gt;front;
+                    int data = temp-&gt;data;
+                    q-&gt;front = q-&gt;front-&gt;next;
+                
+                    if (q-&gt;front == NULL)
+                     {
+                        q-&gt;rear = NULL;
+                    }
+                
+                    free(temp);
+                    return data;
+                }
+                
+                int isEmpty(struct queue* q) 
+                {
+                    return (q-&gt;front == NULL);
+                }
+                
+                int size(struct queue* q) 
+                {
+                    int count = 0;
+                    struct node* temp = q-&gt;front;
+                    while (temp != NULL) 
+                    {
+                        count++;
+                        temp = temp-&gt;next;
+                    }
+                    return count;
+                }
+                
+                void displayQueue(struct queue* q) 
+                {
+                    if (q-&gt;front == NULL) 
+                    {
+                        printf("Queue is empty\n");
+                        return;
+                    }
+                
+                    struct node* temp = q-&gt;front;
+                    while (temp != NULL) 
+                    {
+                        printf("%d ", temp-&gt;data);
+                        temp = temp-&gt;next;
+                    }
+                    printf("\n");
+                }
+                
+                int main() 
+                {
+                    struct queue* q = createQueue();
+                
+                    int choice, data;
+                    while (1) 
+                    {
+                        printf("Enter choice:\n");
+                        scanf("%d", &choice);
+                
+                        switch (choice) 
+                        {
+                            case 1:
+                                printf("Enter data to enqueue: ");
+                                scanf("%d", &data);
+                                enQueue(q, data);
+                                break;
+                            case 2:
+                                data = deQueue(q);
+                                if (data != -1) {
+                                    printf("Dequeued data: %d\n", data);
+                                }
+                                break;
+                            case 3:
+                                if (isEmpty(q)) {
+                                    printf("Queue is empty\n");
+                                } else {
+                                    printf("Queue is not empty\n");
+                                }
+                                break;
+                            case 4:
+                                printf("Queue size: %d\n", size(q));
+                                break;
+                            case 5:
+                                printf("Queue elements: ");
+                                displayQueue(q);
+                                break;
+                            case 0:
+                                printf("Exiting...\n");
+                                return 0;
+                            default:
+                                printf("Invalid choice\n");
+                        }
+                    }
+                }
+        </code>
+    </pre>
+    <script src="../prism.js"></script>
+</body>
+</html>
